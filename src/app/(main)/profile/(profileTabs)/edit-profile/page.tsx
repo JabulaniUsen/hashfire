@@ -13,7 +13,10 @@ function ThemeToggle() {
 
   useEffect(() => {
     setMounted(true);
-  }, []);
+    if (!localStorage.getItem('theme')) {
+      setTheme('light');
+    }
+  }, [setTheme]);
 
   if (!mounted) return null;
 
@@ -116,18 +119,20 @@ function EditProfile() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
-                className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white dark:bg-[#2C2C2E] text-primary dark:text-white px-6 sm:px-8 py-4 sm:py-6 rounded-xl shadow-xl z-50 w-[90%] sm:w-auto min-w-[280px] max-w-[400px] text-center"
+                className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white dark:bg-[#2C2C2E] text-primary dark:text-white px-6 sm:px-8 py-4 sm:py-6 rounded-xl shadow-xl z-50 w-[90%] sm:w-auto min-w-[280px] max-w-[400px] text-center mx-auto"
               >
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 0.2 }}
-                  className="mb-3 text-3xl text-[#FF6B2C]"
-                >
-                  ✓
-                </motion.div>
-                <h3 className="text-xl font-semibold mb-2 dark:text-white">Success!</h3>
-                <p className="dark:text-gray-300">Profile updated successfully!</p>
+                <div className="flex flex-col items-center justify-center">
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 0.2 }}
+                    className="mb-3 text-3xl text-[#FF6B2C]"
+                  >
+                    ✓
+                  </motion.div>
+                  <h3 className="text-xl font-semibold mb-2 dark:text-white">Success!</h3>
+                  <p className="dark:text-gray-300">Profile updated successfully!</p>
+                </div>
               </motion.div>
             </>
           )}
