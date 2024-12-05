@@ -29,14 +29,19 @@ const ImageUpload: React.FC = () => {
 
   return (
     <div className="max-w-md mx-auto p-4">
-      <div className="relative w-[150px] h-[150px]">
+      <div className="relative w-[152px] h-[150px]">
         <div 
-          className="absolute inset-0 border-2 border-primary rounded-full border-dashed"
-          style={{ animation: 'rotate 20s linear infinite' }}
+          className="absolute w-3 h-3 rounded-full bg-primary"
+          style={{ 
+            animation: 'rotate 5s linear infinite',
+            top: '-4px',
+            left: 'calc(50% - 6px)',
+            transformOrigin: '50% 79px'
+          }}
         />
         
         <div
-          className="relative w-full h-full rounded-full flex items-center justify-center cursor-pointer p-2"
+          className="relative w-full h-full rounded-full flex items-center justify-center cursor-pointer"
           onDragOver={(e) => e.preventDefault()}
           onDrop={handleDrop}
         >
