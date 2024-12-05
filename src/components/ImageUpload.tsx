@@ -30,18 +30,23 @@ const ImageUpload: React.FC = () => {
   return (
     <div className="max-w-md mx-auto p-4">
       <div className="relative w-[152px] h-[150px]">
-        <div 
-          className="absolute w-3 h-3 rounded-full bg-primary"
-          style={{ 
-            animation: 'rotate 3s linear infinite, trail 1.5s linear infinite',
-            top: '-4px',
-            left: 'calc(50% - 6px)',
-            transformOrigin: '50% 79px'
-          }}
-        />
+        {[...Array(3)].map((_, i) => (
+          <div 
+            key={i}
+            className="absolute w-3 h-3 rounded-full bg-primary"
+            style={{ 
+              animation: `rotate 3s linear infinite`,
+              top: '-4px',
+              left: 'calc(50% - 6px)',
+              transformOrigin: '50% 79px',
+              opacity: 1 - (i * 0.3),
+              animationDelay: `-${i * 0.15}s`
+            }}
+          />
+        ))}
         
         <div
-          className="relative w-full h-full rounded-full flex items-center justify-center cursor-pointer border-2 border-gray-200"
+          className="relative w-full h-full rounded-full flex items-center justify-center cursor-pointer border-gray-200"
           onDragOver={(e) => e.preventDefault()}
           onDrop={handleDrop}
         >
@@ -78,21 +83,10 @@ const ImageUpload: React.FC = () => {
         <style jsx>{`
           @keyframes rotate {
             from {
-              transform: rotate(0deg);
-            }
-            to {
               transform: rotate(360deg);
             }
-          }
-          @keyframes trail {
-            0% {
-              opacity: 1;
-            }
-            50% {
-              opacity: 0.5;
-            }
-            100% {
-              opacity: 0;
+            to {
+              transform: rotate(0deg);
             }
           }
         `}</style>
