@@ -33,7 +33,7 @@ const ImageUpload: React.FC = () => {
         <div 
           className="absolute w-3 h-3 rounded-full bg-primary"
           style={{ 
-            animation: 'rotate 5s linear infinite',
+            animation: 'rotate 3s linear infinite, trail 1.5s linear infinite',
             top: '-4px',
             left: 'calc(50% - 6px)',
             transformOrigin: '50% 79px'
@@ -41,7 +41,7 @@ const ImageUpload: React.FC = () => {
         />
         
         <div
-          className="relative w-full h-full rounded-full flex items-center justify-center cursor-pointer"
+          className="relative w-full h-full rounded-full flex items-center justify-center cursor-pointer border-2 border-gray-200"
           onDragOver={(e) => e.preventDefault()}
           onDrop={handleDrop}
         >
@@ -82,6 +82,17 @@ const ImageUpload: React.FC = () => {
             }
             to {
               transform: rotate(360deg);
+            }
+          }
+          @keyframes trail {
+            0% {
+              opacity: 1;
+            }
+            50% {
+              opacity: 0.5;
+            }
+            100% {
+              opacity: 0;
             }
           }
         `}</style>
