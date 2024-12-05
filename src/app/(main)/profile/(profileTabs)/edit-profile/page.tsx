@@ -19,7 +19,7 @@ function ThemeToggle() {
 
   return (
     <motion.button
-      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+      onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
       className="fixed top-4 right-4 w-10 h-10 bg-[#FF6B2C] rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform z-50"
       whileTap={{ scale: 0.9 }}
       whileHover={{ rotate: 15 }}
