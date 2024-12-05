@@ -3,7 +3,7 @@
 import PageTransition from '@/components/PageTransition'
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Shield, Key, Smartphone, History, Eye, EyeOff } from 'lucide-react'
+import { Key, Smartphone, History, Eye, EyeOff } from 'lucide-react'
 
 interface SecurityActivity {
   id: string;

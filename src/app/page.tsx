@@ -61,6 +61,7 @@ export default function Home() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
 
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -69,6 +70,8 @@ export default function Home() {
 
     return () => clearTimeout(timer);
   }, [router]);
+
+  if (!isLoading) return null;
 
   return (
     <div className="min-h-screen bg-white dark:bg-[#1C1C1E] flex flex-col items-center justify-center">
