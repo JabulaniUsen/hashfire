@@ -30,25 +30,34 @@ const ImageUpload: React.FC = () => {
   return (
     <div className="max-w-md mx-auto p-4">
       <div className="relative w-[152px] h-[150px]">
-        {[...Array(3)].map((_, i) => (
-          <div 
-            key={i}
-            className="absolute w-3 h-3 rounded-full bg-primary"
-            style={{ 
-              animation: `rotate 3s linear infinite`,
-              top: '-4px',
-              left: 'calc(50% - 6px)',
-              transformOrigin: '50% 79px',
-              opacity: 1 - (i * 0.3),
-              animationDelay: `-${i * 0.15}s`
-            }}
-          />
-        ))}
+        <div 
+          className="absolute inset-0 rounded-full"
+          style={{
+            background: `conic-gradient(from 0deg, #FF710A 0%, transparent 100%)`,
+            animation: 'spin 2s linear infinite',
+            zIndex: 0,
+            filter: 'blur(25px)',
+            opacity: 0.5,
+            transform: 'scale(1.1)'
+          }}
+        />
+        
+        <div 
+          className="absolute inset-0 rounded-full"
+          style={{
+            background: `conic-gradient(from 0deg, #FF710A 0%, transparent 100%)`,
+            animation: 'spin 2s linear infinite',
+            zIndex: 0,
+            filter: 'blur(20px)',
+            opacity: 0.5
+          }}
+        />
         
         <div
-          className="relative w-full h-full rounded-full flex items-center justify-center cursor-pointer border-gray-200"
+          className="relative w-full h-full rounded-full flex items-center justify-center cursor-pointer bg-white"
           onDragOver={(e) => e.preventDefault()}
           onDrop={handleDrop}
+          style={{ zIndex: 1 }}
         >
           {imagePreview ? (
             <img
@@ -81,12 +90,12 @@ const ImageUpload: React.FC = () => {
         </div>
         
         <style jsx>{`
-          @keyframes rotate {
+          @keyframes spin {
             from {
-              transform: rotate(360deg);
+              transform: rotate(0deg);
             }
             to {
-              transform: rotate(0deg);
+              transform: rotate(-360deg);
             }
           }
         `}</style>
